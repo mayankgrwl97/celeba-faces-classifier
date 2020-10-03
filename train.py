@@ -5,6 +5,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from torchvision import transforms
 from torchvision.datasets import CelebA
+from tqdm.auto import tqdm
 
 
 class Classifier(nn.Module):
@@ -74,6 +75,8 @@ def train_classifier(filename):
     beta_1 = 0.5
     beta_2 = 0.999
     image_size = 64
+    batch_size = 128
+    device = 'cuda'
 
     transform = transforms.Compose([
         transforms.Resize(image_size),
